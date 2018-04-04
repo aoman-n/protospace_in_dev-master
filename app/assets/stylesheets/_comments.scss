@@ -1,0 +1,14 @@
+.comments-content{
+  .comment-main {
+    &__user-name {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    &__text {
+    }
+  }
+  .form-title {
+    font-weight: bold;
+    font-size: 20px;
+  }
+}

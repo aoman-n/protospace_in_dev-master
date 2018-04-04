@@ -37,3 +37,18 @@
           %a{href: "#", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
+
+    .comments-content
+      %h4.comment-title Comment(#)
+
+      -@comments.each do |comment|
+        .comment-main
+          .comment-main__user-name #{comment.user.name}
+          .comment-main__text #{comment.content}
+
+
+      %h4.form-title Write a comment
+      - if current_user
+        = form_tag("/prototypes/#{@prototype.id}/comments", method: :post) do
+          = text_field_tag :content
+          = submit_tag 'COMMENT'
