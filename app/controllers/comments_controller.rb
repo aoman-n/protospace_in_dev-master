@@ -2,7 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     Comment.create(params_comment)
-    redirect_to controller: :prototypes, action: :index
+    redirect_to controller: :prototypes, action: :show, id: params[:prototype_id]
   end
 
   private
