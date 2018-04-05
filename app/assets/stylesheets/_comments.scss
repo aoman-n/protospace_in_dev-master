@@ -1,14 +1,38 @@
-.comments-content{
-  .comment-main {
+.clearfix {
+  content: '';
+  clear: both;
+  display: block;
+}
+
+.comments-body {
+  .comment-left {
+    float: left;
+    font-size: 20px;
+  }
+  .comment-right {
+    float: left;
+    margin-left: 10px;
+    padding-top: 5px;
     &__user-name {
-      font-size: 20px;
+      font-size: 18px;
       font-weight: bold;
     }
     &__text {
+      padding-top: 15px;
     }
   }
-  .form-title {
-    font-weight: bold;
-    font-size: 20px;
+  .form {
+    .form-title {
+      font-weight: bold;
+      font-size: 15px;
+    }
+    .form-body {
+      &__input{
+        font-size: 16px;
+        height: 50px;
+        padding: 0 10px;
+        width: 70px;
+      }
+    }
   }
 }
