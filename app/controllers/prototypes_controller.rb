@@ -1,5 +1,5 @@
 class PrototypesController < ApplicationController
-  before_action :set_prototype, only: :show
+  before_action :set_prototype, only: [:show, :edit, :update, :destroy]
 
   def index
     @prototypes = Prototype.all
@@ -22,6 +22,13 @@ class PrototypesController < ApplicationController
   def show
     @prototype = Prototype.find(params[:id])
     @comments = @prototype.comments.includes(:user)
+  end
+
+  def edit
+    @prototype = Prototype.find(params[:id])
+  end
+
+  def update
   end
 
   private
