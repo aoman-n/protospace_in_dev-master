@@ -8,8 +8,16 @@ class CommentsController < ApplicationController
   end
 
   def create
-    Comment.create(params_comment)
-    redirect_to action: :index
+    @comment = Comment.new(params_comment)
+    if @comment.save
+      redirect_to action: :index
+    else
+      @comments = @prototype.comments.includes(:user)
+      flash.now[:alert] = 'メッセージを入力してください'
+      render :index
+    end
+
+
   end
 
   private
