@@ -1,5 +1,12 @@
 .container.proto-page
   %header.row.user-nav
+    %ul.buttons_for
+      %li
+        = link_to edit_prototype_path(current_user), class: "btn btn-default" do
+          EDIT
+      / %li
+      /   = link_to prototype_path(current_user), method: :delete, class:"btn btn-default" do
+      /     DELETE
     .col-md-6
       .media
         .media-left
