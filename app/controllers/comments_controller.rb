@@ -20,6 +20,16 @@ class CommentsController < ApplicationController
 
   end
 
+  def destroy
+    if @prototype.delete
+      redirect_to prototypes_path,notice: "削除しました"
+    else
+      render "show"
+    end
+  end
+
+
+
   private
   def params_comment
     params.require(:comment).permit(:content).merge(prototype_id: params[:prototype_id], user_id: current_user.id)

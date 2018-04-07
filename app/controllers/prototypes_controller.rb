@@ -25,10 +25,19 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
   end
 
   def update
+  end
+
+  def destroy
+    if current_user.id == @prototype.user.id
+      if @prototype.destroy
+        redirect_to :root, notice: "削除しました"
+      else
+        render "show"
+      end
+    end
   end
 
   private
