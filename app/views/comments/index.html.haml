@@ -1,5 +1,8 @@
 .container.proto-page
   %header.row.user-nav
+    .btn-group
+      .btn.btn-secondary= link_to "EDIT",edit_prototype_path(@prototype)
+      .btn.btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete
     .col-md-6
       .media
         .media-left
