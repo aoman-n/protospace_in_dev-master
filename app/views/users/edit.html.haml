@@ -12,6 +12,8 @@
               = f.file_field :avatar
           .user-email
             = f.text_field :email, placeholder: "Input Email", required: true
+          .user-password
+            = f.password_field :password, placeholder: "Input Password", required: true, autocomplete: "off"
         .col-md-12
           %h4 Position
           .user-user-member.row
