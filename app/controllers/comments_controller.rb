@@ -20,14 +20,6 @@ class CommentsController < ApplicationController
 
   end
 
-  def destroy
-    if @prototype.delete
-      redirect_to prototypes_path,notice: "削除しました"
-    else
-      render "show"
-    end
-  end
-
 
 
   private

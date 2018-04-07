@@ -1,21 +1,21 @@
 .container.proto-page
   %header.row.user-nav
-  .btn-group
-    .btn.btn-secondary= link_to "EDIT",edit_prototype_path(@prototype)
-    .btn.btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete
-    .col-md-6
-      .media
-        .media-left
-          = link_to user_path(@prototype.user) do
-            = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
-        .media-body
-          %h4#top-aligned-media.media-heading
-            = @prototype.title
-          .proto-user
-            by
-            = link_to "#{@prototype.user.name}", user_path(@prototype.user)
-            .degree
-              = @prototype.user.position
+    .btn-group
+      .btn.btn-secondary= link_to "EDIT",edit_prototype_path(@prototype)
+      .btn.btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete
+  .col-md-6
+    .media
+      .media-left
+        = link_to user_path(@prototype.user) do
+          = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+      .media-body
+        %h4#top-aligned-media.media-heading
+          = @prototype.title
+        .proto-user
+          by
+          = link_to "#{@prototype.user.name}", user_path(@prototype.user)
+          .degree
+            = @prototype.user.position
   .row
     .col-md-9.image-box
       = image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
