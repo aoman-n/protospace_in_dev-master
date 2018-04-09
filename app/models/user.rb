@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
   has_many :comments
 
   validates :name, presence: true
+
+  def set_thumbnail
+    avatar
+  end
 end
