@@ -45,7 +45,7 @@
       -@comments.each do |comment|
         .comment.clearfix
           .comment-left
-            = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+            = image_tag(comment.user.avatar, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
           .comment-right
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
