@@ -1,37 +1,51 @@
-.clearfix {
-  content: '';
-  clear: both;
-  display: block;
-}
-
 .comments-body {
-  .comment-left {
-    float: left;
+  margin: 30px 0;
+  .comment {
+    margin-top: 30px;
+    .comment-left {
+      float: left;
+      font-size: 20px;
+    }
+    .comment-right {
+      float: left;
+      margin-left: 10px;
+      &__user-name {
+        font-size: 18px;
+        font-weight: bold;
+      }
+      &__text {
+        padding-top: 15px;
+      }
+    }
+  }
+}
+.form {
+  margin-bottom: 30px;
+  .form-title {
+    font-weight: bold;
     font-size: 20px;
   }
-  .comment-right {
-    float: left;
-    margin-left: 10px;
-    padding-top: 5px;
-    &__user-name {
-      font-size: 18px;
-      font-weight: bold;
-    }
-    &__text {
-      padding-top: 15px;
-    }
-  }
-  .form {
-    .form-title {
-      font-weight: bold;
-      font-size: 15px;
-    }
-    .form-body {
-      &__input{
-        font-size: 16px;
+  .form-body {
+    .new_comment {
+      .message {
+      font-size: 20px;
+      height: 70px;
+      padding: 0 10px;
+      // border-style: none;
+      width: calc(100% - 280px);
+      float: left;
+      border: 1.5px #87cefa solid;
+      }
+      .send-bottun {
+        // border-style: none;
         height: 50px;
-        padding: 0 10px;
-        width: 70px;
+        background-color: #2E9AFE;
+        padding: 0 20px;
+        color: #FFFFFF;
+        margin-left: 15px;
+        font-size: 16px;
+        font-weight: bold;
+        @include hover ();
       }
     }
   }
