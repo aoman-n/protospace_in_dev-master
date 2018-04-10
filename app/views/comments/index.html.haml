@@ -42,20 +42,20 @@
           %a{href: "#", class: "btn btn-default"} wireframe
 
   .comments-content
-    %h4.comment-title Comment(#{@comments.count})
+    %h3.comment-title Comment(#{@comments.count})
 
     .comments-body
       -@comments.each do |comment|
         .comment.clearfix
           .comment-left
-            = image_tag '#', alt:"image"
+            = image_tag(comment.user.avatar, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
           .comment-right
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
     .form
-      %h3.form-title Write a comment
+      %h4.form-title Write a comment
       .form-body
         - if current_user
           = form_for [@prototype, @comment] do |f|
-            = f.text_field :content, placeholder:"Input comment", class:"form-body__input"
-            = f.submit 'COMMENT', class:"form-body__button"
+            = f.text_area :content, class: 'message', placeholder:'Input comment'
+            = f.submit 'COMMENT', class: 'send-bottun'

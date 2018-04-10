@@ -8,23 +8,20 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(params_comment)
+    @comment = @prototype.comments.new(params_comment)
     if @comment.save
-      redirect_to action: :index
+      redirect_to prototype_comments_path(@prototype), notice: 'メッセージを投稿しました'
     else
-      @comments = @prototype.comments.includes(:user)
       flash.now[:alert] = 'メッセージを入力してください'
+      @comments = @prototype.comments.includes(:user)
       render :index
     end
 
-
   end
-
-
 
   private
   def params_comment
-    params.require(:comment).permit(:content).merge(prototype_id: params[:prototype_id], user_id: current_user.id)
+    params.require(:comment).permit(:content).merge( user_id: current_user.id)
   end
 
   def set_prototype
