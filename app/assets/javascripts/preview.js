@@ -1,4 +1,5 @@
 $(function(){
+
   //画像ファイルプレビュー表示のイベント追加 fileを選択時に発火するイベントを登録
   $('form').on('change', 'input[type="file"]', function(e) {
     var file = e.target.files[0],
@@ -11,14 +12,11 @@ $(function(){
     reader.onload = (function(file) {
       return function(e) {
         //既存のプレビューを削除
-        $preview.empty();
+        // $preview.empty();
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         $preview.append($('<img>').attr({
                   src: e.target.result,
-                  width: "100%",
-                  overflow: "hidden",
-                  height: "auto",
-                  class: "cover-image-upload",
+                  class: "cover-image-upload__image",
                   title: file.name
               }));
       };
