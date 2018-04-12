@@ -126,9 +126,6 @@ body {
 
 
 /*-- Button groups --------------------------------- */
-.btn-group {
-  float: right
-}
 .btn-group .btn {
   border-radius: 2px;
 }
@@ -219,9 +216,6 @@ body {
   }
 }
 
-.btn-secondary {
-  float: right;
-}
 
 .btn-default {
   border: 1px solid #eee;
@@ -424,6 +418,7 @@ body {
     height: 500px;
     position: relative;
     margin-bottom: 20px;
+    overflow: hidden;
 
     input {
       position: absolute;
@@ -438,6 +433,13 @@ body {
     }
   }
 
+  .cover-image-upload__image {
+    height: 100%;
+    // width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
   .list-group-item {
     border: 0;
     margin-bottom: 20px;
@@ -446,6 +448,7 @@ body {
       background: image-url("noimage.png") #fff no-repeat center center;
       height: 200px;
       position: relative;
+      overflow: hidden;
 
       input {
         position: absolute;
@@ -638,3 +641,4 @@ body {
   border-color: #ebccd1;
   color: #a94442;
 }
+
