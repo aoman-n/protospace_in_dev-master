@@ -28,6 +28,11 @@ class PrototypesController < ApplicationController
   end
 
   def update
+     if @prototype.update(prototype_params)
+       redirect_to user_path(current_user)
+     else
+       render :edit
+     end
   end
 
   def destroy
@@ -52,7 +57,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:content, :status, :id]
     )
   end
 end
