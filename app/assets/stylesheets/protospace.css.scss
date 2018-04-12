@@ -420,13 +420,6 @@ body {
     margin-bottom: 20px;
     overflow: hidden;
 
-    .cover-image-upload__image {
-      height: 100%;
-      // width: 100%;
-      margin: 0 auto;
-      display: block;
-    }
-
     input {
       position: absolute;
       left: 0;
@@ -440,6 +433,13 @@ body {
     }
   }
 
+  .cover-image-upload__image {
+    height: 100%;
+    // width: 100%;
+    margin: 0 auto;
+    display: block;
+  }
+
   .list-group-item {
     border: 0;
     margin-bottom: 20px;
@@ -448,6 +448,7 @@ body {
       background: image-url("noimage.png") #fff no-repeat center center;
       height: 200px;
       position: relative;
+      overflow: hidden;
 
       input {
         position: absolute;
