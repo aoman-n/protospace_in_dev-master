@@ -54,9 +54,9 @@
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
     .form
-      %h4.form-title Write a comment
-      .form-body
-        - if current_user
+      - if current_user
+        %h4.form-title Write a comment
+        .form-body
           = form_for [@prototype, @comment] do |f|
             = f.text_area :content, class: 'message', placeholder:'Input comment'
             = f.submit 'COMMENT', class: 'send-bottun'
