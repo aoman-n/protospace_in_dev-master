@@ -28,7 +28,12 @@ group :development do
   gem 'spring'
 end
 
+gem 'carrierwave'
+gem 'fog'
+
+
 # group :production do
 #   gem 'pg'
 #   gem 'rails_12factor'
 # end
+
