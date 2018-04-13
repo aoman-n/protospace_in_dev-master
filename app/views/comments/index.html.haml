@@ -1,8 +1,9 @@
 .container.proto-page
   %header.row.user-nav
-    .btn-group
-      .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
-      .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
+    - if user_signed_in? && current_user.id == @prototype.user_id
+      .btn-group
+        .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
+        .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
     .col-md-6
       .media
         .media-left

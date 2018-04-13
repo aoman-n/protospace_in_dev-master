@@ -130,6 +130,10 @@ body {
   border-radius: 2px;
 }
 
+.btn-group {
+  float: right;
+}
+
 .btn-group.open .dropdown-toggle {
   outline: 0;
   outline-offset: 0;
@@ -641,4 +645,3 @@ body {
   border-color: #ebccd1;
   color: #a94442;
 }
-
