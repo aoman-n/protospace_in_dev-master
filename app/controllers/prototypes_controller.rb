@@ -15,7 +15,7 @@ class PrototypesController < ApplicationController
     if @prototype.save
       redirect_to :root, notice: 'New prototype was successfully created'
     else
-      redirect_to ({ action: new }), alert: 'YNew prototype was unsuccessfully created'
+      redirect_to ({ action: :new }), alert: 'YNew prototype was unsuccessfully created'
      end
   end
 
@@ -25,10 +25,24 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
   end
 
   def update
+     if @prototype.update(prototype_params)
+       redirect_to user_path(current_user)
+     else
+       render :edit
+     end
+  end
+
+  def destroy
+    if current_user.id == @prototype.user.id
+      if @prototype.destroy
+        redirect_to :root, notice: "削除しました"
+      else
+        render "show"
+      end
+    end
   end
 
   private
@@ -43,7 +57,7 @@ class PrototypesController < ApplicationController
       :catch_copy,
       :concept,
       :user_id,
-      captured_images_attributes: [:content, :status]
+      captured_images_attributes: [:content, :status, :id]
     )
   end
 end

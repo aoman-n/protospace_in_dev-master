@@ -1,5 +1,9 @@
 .container.proto-page
   %header.row.user-nav
+    - if user_signed_in? && current_user.id == @prototype.user_id
+      .btn-group
+        .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
+        .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
     .col-md-6
       .media
         .media-left
@@ -34,25 +38,25 @@
       %h4 Tag List
       %ul.proto-tag-list.list-inline
         %li
-          %a{href: "#", class: "btn btn-default"} iPad
+          %a{href: "", class: "btn btn-default"} iPad
         %li
           %a{href: "#", class: "btn btn-default"} wireframe
 
   .comments-content
-    %h4.comment-title Comment(#{@comments.count})
+    %h3.comment-title Comment(#{@comments.count})
 
     .comments-body
       -@comments.each do |comment|
         .comment.clearfix
           .comment-left
-            = image_tag '#', alt:"image"
+            = image_tag(comment.user.avatar, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
           .comment-right
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
     .form
-      %h3.form-title Write a comment
-      .form-body
-        - if current_user
+      - if current_user
+        %h4.form-title Write a comment
+        .form-body
           = form_for [@prototype, @comment] do |f|
-            = f.text_field :content, placeholder:"Input comment", class:"form-body__input"
-            = f.submit 'COMMENT', class:"form-body__button"
+            = f.text_area :content, class: 'message', placeholder:'Input comment'
+            = f.submit 'COMMENT', class: 'send-bottun'
