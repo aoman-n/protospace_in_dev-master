@@ -14,6 +14,7 @@ $(function(){
       return function(e) {
         //既存のプレビューを削除
         t.find(".cover-image-upload__image").remove();
+        t.find(".img-responsive").remove();
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         t.append($('<img>').attr({
                   src: e.target.result,
@@ -38,6 +39,7 @@ $(function(){
       return function(e) {
         //既存のプレビューを削除
         t.find(".cover-image-upload__image").remove();
+        t.find(".img-responsive").remove();
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         t.append($('<img>').attr({
                   src: e.target.result,
@@ -62,6 +64,7 @@ $(function(){
       return function(e) {
         //既存のプレビューを削除
         t.find(".cover-image-upload__image").remove();
+        t.find(".img-responsive").remove();
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         t.append($('<img>').attr({
                   src: e.target.result,
@@ -86,6 +89,7 @@ $(function(){
       return function(e) {
         //既存のプレビューを削除
         t.find(".cover-image-upload__image").remove();
+        t.find(".img-responsive").remove();
         // .prevewの領域の中にロードした画像を表示するimageタグを追加
         t.append($('<img>').attr({
                   src: e.target.result,
