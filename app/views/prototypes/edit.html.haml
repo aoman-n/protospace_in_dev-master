@@ -11,20 +11,24 @@
         .col-md-12
           %h4 Main Thumbnail
           .cover-image-upload#main_image_uploader
+            =image_tag(@prototype.set_main_thumbnail.large, class: 'img-responsive img-size-fix', style: "margin: 0 auto;")
             = f.fields_for :captured_images do |image|
-              %img
-              = image.file_field :content, required: true
-              = image.hidden_field :status, value: "main"
+              -if image.object == @prototype.captured_images[0]
+                %img
+                = image.file_field :content,required: true
+                = image.hidden_field :status, value: "main"
         .col-md-12
           %h4 Sub Thumbnails
           %ul.proto-sub-list.list-group
             - 3.times do |i|
               %li.list-group-item.col-md-4
                 .image-upload
+                  = image_tag(@prototype.captured_images.sub[i].content,class:'img-responsive sub') if @prototype.captured_images.sub[i].present?
                   = f.fields_for :captured_images do |image|
-                    %img
-                    = image.file_field :content
-                    = image.hidden_field :status, value: "sub"
+                    -if image.object == @prototype.captured_images[i+1]
+                      %img
+                      = image.file_field :content
+                      = image.hidden_field :status, value: "sub"
       .row.proto-description
         .col-md-12
           %h4 Catch Copy
