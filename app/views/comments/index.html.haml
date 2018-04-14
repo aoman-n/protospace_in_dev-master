@@ -1,8 +1,9 @@
 .container.proto-page
   %header.row.user-nav
-    .btn-group
-      .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
-      .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
+    - if user_signed_in? && current_user.id == @prototype.user_id
+      .btn-group
+        .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
+        .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
     .col-md-6
       .media
         .media-left
@@ -53,9 +54,9 @@
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
     .form
-      %h4.form-title Write a comment
-      .form-body
-        - if current_user
+      - if current_user
+        %h4.form-title Write a comment
+        .form-body
           = form_for [@prototype, @comment] do |f|
             = f.text_area :content, class: 'message', placeholder:'Input comment'
             = f.submit 'COMMENT', class: 'send-bottun'
