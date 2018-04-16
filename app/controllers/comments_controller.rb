@@ -10,7 +10,11 @@ class CommentsController < ApplicationController
   def create
     @comment = @prototype.comments.new(params_comment)
     if @comment.save
-      redirect_to prototype_comments_path(@prototype), notice: 'メッセージを投稿しました'
+      # redirect_to prototype_comments_path(@prototype), notice: 'メッセージを投稿しました'
+      respond_to do |format|
+        format.html { redirect_to prototype_comments_path(@prototype) }
+        format.json
+      end
     else
       flash.now[:alert] = 'メッセージを入力してください'
       @comments = @prototype.comments.includes(:user)

@@ -8,7 +8,7 @@
       .media
         .media-left
           = link_to user_path(@prototype.user) do
-            = image_tag(@prototype.user.avatar.thumb, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
+            = image_tag(@prototype.user.avatar, alt: "profile_photo", class: "media-object", style: "width: 64px; height: 64px;")
         .media-body
           %h4#top-aligned-media.media-heading
             = @prototype.title
@@ -49,7 +49,7 @@
       -@comments.each do |comment|
         .comment.clearfix
           .comment-left
-            = image_tag(comment.user.avatar, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
+            = image_tag(comment.user.set_thumbnail, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
           .comment-right
             .comment-right__user-name #{comment.user.name}
             .comment-right__text #{comment.content}
