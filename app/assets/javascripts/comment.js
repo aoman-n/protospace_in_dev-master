@@ -16,6 +16,7 @@ $(function(){
                   </div>
                 </div>`
     $('.comments-body').append(html);
+    $('.comment-title').text(`Comment(${comment.count})`);
   }
 
   $('#new_comment').on('submit',function(e){

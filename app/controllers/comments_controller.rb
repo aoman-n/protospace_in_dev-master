@@ -9,6 +9,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @prototype.comments.new(params_comment)
+    @comments = @prototype.comments.includes(:user)
     if @comment.save
       # redirect_to prototype_comments_path(@prototype), notice: 'メッセージを投稿しました'
       respond_to do |format|
