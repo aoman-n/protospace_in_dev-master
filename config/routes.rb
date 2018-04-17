@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :prototypes, only: [:index, :new, :create, :show, :edit, :update, :destroy] do
     resources :comments, only: [:index, :create] do
       collection do
-      get :like
+      post :like
     end
   end
 

@@ -8,7 +8,23 @@ class CommentsController < ApplicationController
   end
 
   def like
-    @like = @prototype.likes.build(prototype_id: @prototype.id, user_id: current_user.id)
+    @like = Like.new(like_params)
+    if @like.save
+      # ajax here after, this is tmp
+
+      # updating like count for prototype table
+      like_count
+      Prototype.find(params[:prototype_id]).update(like: @count)
+
+      flash[:notice] = "You liked!"
+      redirect_to action: "index"
+    else
+      redirect_to action: "index"
+    end
+  end
+
+  def like_count
+    @count = Like.where(prototype_id: params[:prototype_id]).count
   end
 
   def create
@@ -26,6 +42,10 @@ class CommentsController < ApplicationController
   private
   def params_comment
     params.require(:comment).permit(:content).merge( user_id: current_user.id)
+  end
+
+  def like_params
+    params.permit(:user_id, :prototype_id)
   end
 
   def set_prototype
