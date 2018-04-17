@@ -47,7 +47,7 @@
 
     .comments-body
       -@comments.each do |comment|
-        .comment.clearfix
+        .comment.clearfix{"data-id": comment.id }
           .comment-left
             = image_tag(comment.user.set_thumbnail, alt: "profile_photo", class: "media-object", style: "width: 70px; height: 70px;")
           .comment-right

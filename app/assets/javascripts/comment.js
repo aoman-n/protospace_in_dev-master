@@ -1,7 +1,7 @@
 $(function(){
 
   function appendHTML(comment) {
-    var html = `<div class="comment clearfix">
+    var html = `<div class="comment clearfix" data-id=${comment.id}>
                   <div class="comment-left">
                     <img src="${comment.user_avatar}" alt="profile_pohoto" class="media-object"
                     style="width: 70px; height: 70px;">
@@ -35,10 +35,35 @@ $(function(){
       appendHTML(data);
       $('.message').val('');
       $('.send-bottun').prop('disabled', false);
+      $('.comments-content').animate({scrollTop: $('.comments-content')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
       alert('コメントを入力してください');
       $('.send-bottun').prop('disabled', false);
     })
   });
+
+  var interval = setInterval(function(){
+    if (location.href.match(/\/prototypes\/\d+\/comments/)) {
+      var commentId = $('.comment:last').data('id');
+      $.ajax({
+        url: location.href,
+        type: "GET",
+        data: {
+          id: commentId
+        },
+        dataType: 'json',
+      })
+      .always(function(comments){
+        if (comments.length !== 0) {
+          comments.forEach(function(comment){
+            appendHTML(comment);
+          });
+          $('.comments-content').animate({scrollTop: $('.comments-content')[0].scrollHeight}, 'fast');
+        }
+      })
+    } else {
+      clearInterval(interval);
+  }},5000);
 });
+

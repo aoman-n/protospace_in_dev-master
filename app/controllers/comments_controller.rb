@@ -5,23 +5,23 @@ class CommentsController < ApplicationController
   def index
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
+    respond_to do |format|
+      format.html
+      format.json { @update_comments = Comment.where('id > ?', params[:id]) }
+    end
   end
 
   def create
     @comment = @prototype.comments.new(params_comment)
     @comments = @prototype.comments.includes(:user)
     if @comment.save
-      # redirect_to prototype_comments_path(@prototype), notice: 'メッセージを投稿しました'
       respond_to do |format|
         format.html { redirect_to prototype_comments_path(@prototype) }
         format.json
       end
     else
-      flash.now[:alert] = 'メッセージを入力してください'
-      @comments = @prototype.comments.includes(:user)
-      render :index
+      redirect_to prototype_comments_path(@prototype)
     end
-
   end
 
   private
