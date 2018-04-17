@@ -35,7 +35,7 @@ $(function(){
       appendHTML(data);
       $('.message').val('');
       $('.send-bottun').prop('disabled', false);
-      $('.comments-content').animate({scrollTop: $('.comments-content')[0].scrollHeight}, 'fast');
+      $('.comments-body').animate({scrollTop: $('.comments-body')[0].scrollHeight}, 'fast');
     })
     .fail(function(){
       alert('コメントを入力してください');
@@ -59,7 +59,7 @@ $(function(){
           comments.forEach(function(comment){
             appendHTML(comment);
           });
-          $('.comments-content').animate({scrollTop: $('.comments-content')[0].scrollHeight}, 'fast');
+          $('.comments-body').animate({scrollTop: $('.comments-body')[0].scrollHeight}, 'fast');
         }
       })
     } else {
