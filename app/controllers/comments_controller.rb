@@ -7,6 +7,10 @@ class CommentsController < ApplicationController
     @comments = @prototype.comments.includes(:user)
   end
 
+  def like
+    @like = @prototype.likes.build(prototype_id: @prototype.id, user_id: current_user.id)
+  end
+
   def create
     @comment = @prototype.comments.new(params_comment)
     if @comment.save

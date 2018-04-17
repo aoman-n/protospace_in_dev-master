@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403015155) do
+ActiveRecord::Schema.define(version: 20180417013618) do
 
   create_table "captured_images", force: :cascade do |t|
     t.string  "content",      limit: 255
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20180403015155) do
   add_index "comments", ["prototype_id"], name: "fk_rails_5a7b40847a", using: :btree
   add_index "comments", ["user_id"], name: "fk_rails_03de2dc08c", using: :btree
 
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "prototype_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "likes", ["prototype_id"], name: "fk_rails_8847d87628", using: :btree
+  add_index "likes", ["user_id"], name: "fk_rails_1e09b5dabf", using: :btree
+
   create_table "prototypes", force: :cascade do |t|
     t.string   "title",      limit: 255
     t.string   "catch_copy", limit: 255
@@ -39,6 +49,7 @@ ActiveRecord::Schema.define(version: 20180403015155) do
     t.integer  "user_id",    limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
+    t.integer  "like",       limit: 4
   end
 
   add_index "prototypes", ["user_id"], name: "index_prototypes_on_user_id", using: :btree
@@ -69,5 +80,7 @@ ActiveRecord::Schema.define(version: 20180403015155) do
   add_foreign_key "captured_images", "prototypes"
   add_foreign_key "comments", "prototypes"
   add_foreign_key "comments", "users"
+  add_foreign_key "likes", "prototypes"
+  add_foreign_key "likes", "users"
   add_foreign_key "prototypes", "users"
 end
