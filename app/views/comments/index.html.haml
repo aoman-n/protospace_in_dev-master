@@ -4,6 +4,10 @@
       .btn-group
         .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
         .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
+    .like-box
+      %button{class: "btn btn-default",id: "like-button"}
+        = image_tag("/assets/liked.png",size: "16x16",id:"like-image")
+        %span 1
     .col-md-6
       .media
         .media-left
