@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
       # updating like count for prototype table
       like_count
       Prototype.find(params[:prototype_id]).update(like: @count)
+      @like_count
       respond_to do |format|
         format.html {redirect_to prototype_comments_path(@prototype)}
         format.json
