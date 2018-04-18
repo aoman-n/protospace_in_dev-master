@@ -2,11 +2,10 @@ $(function(){
 
   function countUpLike(likeCount) {
   	var new_count = Number(likeCount) + 1;
-  	// $('#like-text').text(new_count);
+  	$('#like-text').html(`<img id="like-image" src="/assets/liked.png" alt="Liked" width="19" height="19" />${new_count}`);
   }
 
   $('.like-bottun').on('click',function(){
-  	// e.preventDefault();
   	var likeCount = $('#like-text').text();
   	console.log(likeCount);
   	$.ajax ({
