@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :set_prototype
+  before_action :set_prototype, :like_count
 
   def index
     @comment = Comment.new
@@ -15,9 +15,12 @@ class CommentsController < ApplicationController
       # updating like count for prototype table
       like_count
       Prototype.find(params[:prototype_id]).update(like: @count)
-
-      flash[:notice] = "You liked!"
-      redirect_to action: "index"
+      respond_to do |format|
+        format.html {redirect_to prototype_comments_path(@prototype)}
+        format.json
+      end
+      # flash[:notice] = "You liked!"
+      # redirect_to action: "index"
     else
       redirect_to action: "index"
     end
