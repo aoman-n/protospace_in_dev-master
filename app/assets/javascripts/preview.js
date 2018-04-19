@@ -1,36 +1,46 @@
-$(function(){
+$(function () {
 
   // images main, sub-first, sub-second and sub-third
-  var previewImages = [$('.cover-image-upload'), 
-                        $('.image-upload').first(), 
-                        $('.image-upload:eq(1)'), 
-                        $('.image-upload').last()];
+  var previewImages = [$('.cover-image-upload'),
+    $('.image-upload').first(),
+    $('.image-upload:eq(1)'),
+    $('.image-upload').last(),
+    $('.user-image')
+  ];
 
   // iterate through sub-images
-  previewImages.forEach(function(image){
-   image.on('change', 'input[type="file"]', function (e) {
-     var file = e.target.files[0],
-       reader = new FileReader(),
-       t = image;
-     // ファイル読み込みが完了した際のイベント登録
-     reader.onload = (function (file) {
-       return function (e) {
-         //既存のプレビューを削除
-         t.find(".cover-image-upload__image").remove();
-         t.find(".img-responsive").remove();
-         // .prevewの領域の中にロードした画像を表示するimageタグを追加
-         t.append($('<img>').attr({
-           src: e.target.result,
-           class: "cover-image-upload__image",
-           title: file.name
-         }));
+  previewImages.forEach(function (image) {
+    image.on('change', 'input[type="file"]', function (e) {
+      var file = e.target.files[0],
+        reader = new FileReader(),
+        t = image;
+      // ファイル読み込みが完了した際のイベント登録
+      reader.onload = (function (file) {
+        return function (e) {
+          //既存のプレビューを削除
+          t.find(".cover-image-upload__image").remove();
+          t.find(".img-responsive").remove();
+          // .prevewの領域の中にロードした画像を表示するimageタグを追加
+          if (t.parent('.user-name_image').length > 0) {
+            t.append($('<img>').attr({
+              src: e.target.result,
+              class: "cover-image-upload__image dp",
+              style: "width: 80px; height: 80px;",
+              title: file.name
+            }));
+          } else {
+            t.append($('<img>').attr({
+              src: e.target.result,
+              class: "cover-image-upload__image",
+              title: file.name
+            }));
+          }
+        };
+      })(file);
 
-       };
-     })(file);
+      reader.readAsDataURL(file);
+    });
+  })
 
-     reader.readAsDataURL(file);
-   });
- })
-
- //end of function()
+  //end of function()
 });
