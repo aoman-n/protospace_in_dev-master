@@ -4,6 +4,12 @@
       .btn-group
         .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
         .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
+    - if user_signed_in? && !@liked_user_array.include?(current_user.id)
+      .btn-group
+        .btn-secondary= link_to image_tag("/assets/like.png",size: "19x19",id:"like-image")+ "#{@prototype.like}", like_prototype_comments_path(user_id: current_user.id, prototype_id: @prototype), method: :post, class: "btn btn-default", id: "like-text"
+    - else
+      .btn-group
+        .btn-secondary.btn2.btn-default2= image_tag("/assets/liked.png",size: "19x19",id:"like-image") + "#{@prototype.like}"
     .col-md-6
       .media
         .media-left
