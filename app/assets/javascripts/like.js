@@ -11,6 +11,8 @@ $(function(){
   }
 
   $('#like-text').on('click',function(){
+		var audioElement = $('#audio')[0];
+		audioElement.play();
   	var likeCount = $('#like-text').text();
   	console.log(likeCount);
   	$.ajax ({
