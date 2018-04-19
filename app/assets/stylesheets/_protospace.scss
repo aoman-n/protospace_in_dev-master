@@ -361,6 +361,12 @@ body {
   }
 }
 
+.dp {
+  position: absolute;
+  left: 0;
+  pointer-events: none
+}
+
 .proto-page {
   .user-nav {
     padding: 50px 0;
@@ -458,7 +464,6 @@ body {
     height: 500px;
     position: relative;
     margin-bottom: 20px;
-    overflow: hidden;
 
     input {
       position: absolute;
@@ -564,6 +569,7 @@ body {
     position: relative;
     background-color: #fff;
     background-size: cover;
+    overflow: hidden;
 
     button {
       font-size: 9px;
