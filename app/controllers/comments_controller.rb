@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
 
   def like_count
     @count = Like.where(prototype_id: params[:prototype_id]).count
-    @liked_user_array = Like.where(prototype_id: 6).pluck(:user_id)
+    @liked_user_array = Like.where(prototype_id: params[:prototype_id]).pluck(:user_id)
   end
 
   def create
