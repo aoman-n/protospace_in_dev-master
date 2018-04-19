@@ -1,4 +1,5 @@
 .container.proto-page
+  %audio#audio{src: "/assets/wow.mp3"}
   %header.row.user-nav
     - if user_signed_in? && current_user.id == @prototype.user_id
       .btn-group
