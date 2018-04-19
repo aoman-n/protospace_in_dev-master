@@ -4,6 +4,7 @@
       .btn-group
         .btn-secondary= link_to "EDIT",edit_prototype_path(@prototype), class: 'btn btn-default'
         .btn-secondary= link_to "DELETE",prototype_path(@prototype),method: :delete, class: 'btn btn-default'
+<<<<<<< HEAD
     - if user_signed_in?
       .btn-group
         -if @prototype.likes.count == 0
@@ -13,6 +14,10 @@
     - else
       .btn-group
         .btn-secondary.btn2.btn-default2= image_tag("/assets/like.png",size: "19x19",id:"like-image",class: "like") + "#{@prototype.like}"
+=======
+    .btn-group
+      .btn-secondary.like-bottun= link_to image_tag("/assets/liked.png",size: "19x19",id:"like-image") + "#{@prototype.like}", like_prototype_comments_path(user_id: current_user.id, prototype_id: @prototype), method: :post, remote: true, class: "btn btn-default", id:"like-text"
+>>>>>>> add_like_btn_ajax
     .col-md-6
       .media
         .media-left
