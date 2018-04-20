@@ -15,11 +15,13 @@ gem 'haml-rails'
 gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
-gem 'carrierwave'
 gem 'rmagick'
+gem 'carrierwave'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -28,12 +30,9 @@ group :development do
   gem 'spring'
 end
 
-gem 'carrierwave'
-gem 'fog'
 
 
 # group :production do
 #   gem 'pg'
 #   gem 'rails_12factor'
 # end
-
