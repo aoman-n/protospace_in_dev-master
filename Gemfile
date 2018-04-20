@@ -16,6 +16,7 @@ gem 'erb2haml'
 gem 'bootstrap-sass'
 gem 'devise'
 gem 'carrierwave'
+gem 'fog'
 gem 'rmagick'
 
 group :development, :test do
@@ -28,12 +29,9 @@ group :development do
   gem 'spring'
 end
 
-gem 'carrierwave'
-gem 'fog'
 
 
 # group :production do
 #   gem 'pg'
 #   gem 'rails_12factor'
 # end
-
